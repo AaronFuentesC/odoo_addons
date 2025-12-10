@@ -1,0 +1,128 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="libreria.libro_list">
+      <field name="name">Libros list</field>
+      <field name="model">libreria.libro</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="precio"/>
+          <field name="is_available" widget="boolean_toggle" readonly="1"/>
+        </list>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="libreria.libro_form">
+      <field name="name">Formulario Libro</field>
+      <field name="model">libreria.libro</field>
+      <field name="arch" type="xml">
+        <form string="Formulario Libro">
+          <sheet>
+            <notebook>
+
+              <page string="Detalles del Libro">
+                <group>
+                  <field name="portada" widget="image" options="{'size': [150,250]}"/>
+                  <group>
+                    <field name="name"/>
+                    <field name="description"/>
+                  </group>
+                  <group>
+                    <field name="numPaginas"/>
+                    <field name="precio"/>
+                    <field name="editorial_id"/>
+                  </group>
+                </group>
+
+                <group>
+                  <field name="is_available"/>
+                  <field name="publication_date"/>
+                </group>
+              </page>
+
+              <page string="Autores">
+                <group>
+                  <field name="autores_ids"/>
+                </group>
+              </page>
+
+              <page string="Más pestañas">
+              </page>
+
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Vista de formulario para autores -->
+    <record id="view_autor_form" model="ir.ui.view">
+      <field name="name">libreria.autor_form</field>
+      <field name="model">libreria.autor</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="nombre"/>
+            </group>
+            <notebook>
+              <page name="Libros Publicados" string="string">
+                <field name="libros_ids"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="libreria.editorial_list">
+      <field name="name">Editorial list</field>
+      <field name="model">libreria.editorial</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+        </list>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="libreria.libro_action_window">
+      <field name="name">Listado de libros</field>
+      <field name="res_model">libreria.libro</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="libreria.autor_action_window">
+      <field name="name">Listado de autores</field>
+      <field name="res_model">libreria.autor</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="libreria.editorial_action_window">
+      <field name="name">Listado de Editoriales</field>
+      <field name="res_model">libreria.editorial</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="Gestión de librería" id="libreria.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Gestión" id="libreria.menu_1" parent="libreria.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="Libros" id="libreria.menu_1_list" parent="libreria.menu_1"
+              action="libreria.libro_action_window"/>
+    <menuitem name="Autores" id="libreria.menu_2_list" parent="libreria.menu_1"
+              action="libreria.autor_action_window"/>
+    <menuitem name="Editorial" id="libreria.menu_3_list" parent="libreria.menu_1"
+              action="libreria.editorial_action_window"/>
+
+  </data>
+</odoo>

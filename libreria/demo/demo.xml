@@ -1,0 +1,210 @@
+<odoo>
+    <data noupdate="1">
+
+        <!-- 1 -->
+        <record id="libro_demo_1" model="libreria.libro">
+            <field name="name">El Viaje de los Sueños</field>
+            <field name="description">Un relato mágico sobre la importancia de soñar.</field>
+            <field name="numPaginas">210</field>
+            <field name="precio">14.99</field>
+            <field name="is_available">True</field>
+            <field name="publication_date">2015-03-12</field>
+            <field name="portada" type="base64" file="libreria/static/img/ejemplo.jpg"/>
+        </record>
+
+        <!-- 2 -->
+        <record id="libro_demo_2" model="libreria.libro">
+            <field name="name">La Sombra del Tiempo</field>
+            <field name="description">Una aventura que desafía las leyes temporales.</field>
+            <field name="numPaginas">320</field>
+            <field name="precio">19.50</field>
+            <field name="is_available">True</field>
+            <field name="publication_date">2018-07-21</field>
+            <field name="portada" type="base64" file="libreria/static/img/images1.jpeg"/>
+
+        </record>
+
+        <!-- 3 -->
+        <record id="libro_demo_3" model="libreria.libro">
+            <field name="name">Historias del Bosque Antiguo</field>
+            <field name="description">Criaturas legendarias y secretos milenarios.</field>
+            <field name="numPaginas">150</field>
+            <field name="precio">9.90</field>
+            <field name="is_available">False</field>
+            <field name="publication_date">2012-11-02</field>
+            <field name="portada" type="base64" file="libreria/static/img/the-baby-retsu-meme-has-made-its-way-into-shitty-mobile-v0-bsug5yd4sa2f1.webp"/>
+
+        </record>
+
+        <!-- 4 -->
+        <record id="libro_demo_4" model="libreria.libro">
+            <field name="name">El Guardián de las Estrellas</field>
+            <field name="description">Una misión intergaláctica llena de peligros.</field>
+            <field name="numPaginas">400</field>
+            <field name="precio">22.00</field>
+            <field name="is_available">True</field>
+            <field name="publication_date">2020-01-10</field>
+        </record>
+
+        <!-- 5 -->
+        <record id="libro_demo_5" model="libreria.libro">
+            <field name="name">Crónicas del Mar Profundo</field>
+            <field name="description">Exploraciones submarinas en territorios desconocidos.</field>
+            <field name="numPaginas">275</field>
+            <field name="precio">17.25</field>
+            <field name="is_available">True</field>
+            <field name="publication_date">2017-05-30</field>
+        </record>
+
+        <!-- 6 -->
+        <record id="libro_demo_6" model="libreria.libro">
+            <field name="name">El Código del Destino</field>
+            <field name="description">Un thriller lleno de misterio y conspiraciones.</field>
+            <field name="numPaginas">310</field>
+            <field name="precio">18.99</field>
+            <field name="is_available">False</field>
+            <field name="publication_date">2019-09-18</field>
+        </record>
+
+        <!-- 7 -->
+        <record id="libro_demo_7" model="libreria.libro">
+            <field name="name">Caminos del Silencio</field>
+            <field name="description">Una historia introspectiva sobre la soledad.</field>
+            <field name="numPaginas">190</field>
+            <field name="precio">12.49</field>
+            <field name="is_available">True</field>
+            <field name="publication_date">2013-04-22</field>
+        </record>
+
+        <!-- 8 -->
+        <record id="libro_demo_8" model="libreria.libro">
+            <field name="name">Luces de Medianoche</field>
+            <field name="description">Romance y misterio en una ciudad iluminada.</field>
+            <field name="numPaginas">230</field>
+            <field name="precio">15.75</field>
+            <field name="is_available">True</field>
+            <field name="publication_date">2016-10-05</field>
+        </record>
+
+        <!-- 9 -->
+        <record id="libro_demo_9" model="libreria.libro">
+            <field name="name">El Eco del Pasado</field>
+            <field name="description">Un secreto familiar sale a la luz.</field>
+            <field name="numPaginas">265</field>
+            <field name="precio">16.00</field>
+            <field name="is_available">False</field>
+            <field name="publication_date">2011-12-15</field>
+        </record>
+
+        <!-- 10 -->
+        <record id="libro_demo_10" model="libreria.libro">
+            <field name="name">Reino de Hielo</field>
+            <field name="description">Una épica aventura en tierras congeladas.</field>
+            <field name="numPaginas">350</field>
+            <field name="precio">20.95</field>
+            <field name="is_available">True</field>
+            <field name="publication_date">2021-02-11</field>
+        </record>
+
+        <!-- 11 -->
+        <record id="libro_demo_11" model="libreria.libro">
+            <field name="name">Senderos Ocultos</field>
+            <field name="description">Un viaje por rutas olvidadas.</field>
+            <field name="numPaginas">180</field>
+            <field name="precio">11.20</field>
+            <field name="is_available">True</field>
+            <field name="publication_date">2014-06-01</field>
+        </record>
+
+        <!-- 12 -->
+        <record id="libro_demo_12" model="libreria.libro">
+            <field name="name">El Legado Perdido</field>
+            <field name="description">Un arqueólogo busca un tesoro ancestral.</field>
+            <field name="numPaginas">298</field>
+            <field name="precio">17.80</field>
+            <field name="is_available">True</field>
+            <field name="publication_date">2018-08-19</field>
+        </record>
+
+        <!-- 13 -->
+        <record id="libro_demo_13" model="libreria.libro">
+            <field name="name">Cantos del Desierto</field>
+            <field name="description">Una travesía llena de desafíos y revelaciones.</field>
+            <field name="numPaginas">215</field>
+            <field name="precio">14.50</field>
+            <field name="is_available">False</field>
+            <field name="publication_date">2010-05-07</field>
+        </record>
+
+        <!-- 14 -->
+        <record id="libro_demo_14" model="libreria.libro">
+            <field name="name">El Último Guardián</field>
+            <field name="description">Una profecía que cambiará el mundo.</field>
+            <field name="numPaginas">420</field>
+            <field name="precio">23.40</field>
+            <field name="is_available">True</field>
+            <field name="publication_date">2022-03-14</field>
+        </record>
+
+        <!-- 15 -->
+        <record id="libro_demo_15" model="libreria.libro">
+            <field name="name">Ríos de Plata</field>
+            <field name="description">Un viaje por paisajes extraordinarios.</field>
+            <field name="numPaginas">205</field>
+            <field name="precio">13.60</field>
+            <field name="is_available">True</field>
+            <field name="publication_date">2016-01-25</field>
+        </record>
+
+        <!-- 16 -->
+        <record id="libro_demo_16" model="libreria.libro">
+            <field name="name">Sombras en la Ciudad</field>
+            <field name="description">Detectives, intrigas y crímenes sin resolver.</field>
+            <field name="numPaginas">310</field>
+            <field name="precio">18.00</field>
+            <field name="is_available">True</field>
+            <field name="publication_date">2019-04-09</field>
+        </record>
+
+        <!-- 17 -->
+        <record id="libro_demo_17" model="libreria.libro">
+            <field name="name">Flores de Acero</field>
+            <field name="description">Un relato sobre fuerza y resiliencia.</field>
+            <field name="numPaginas">260</field>
+            <field name="precio">16.75</field>
+            <field name="is_available">False</field>
+            <field name="publication_date">2013-09-27</field>
+        </record>
+
+        <!-- 18 -->
+        <record id="libro_demo_18" model="libreria.libro">
+            <field name="name">Navegantes del Viento</field>
+            <field name="description">Aventuras aéreas en mundos fantásticos.</field>
+            <field name="numPaginas">330</field>
+            <field name="precio">19.90</field>
+            <field name="is_available">True</field>
+            <field name="publication_date">2020-06-12</field>
+        </record>
+
+        <!-- 19 -->
+        <record id="libro_demo_19" model="libreria.libro">
+            <field name="name">El Ojo del Dragón</field>
+            <field name="description">Una reliquia poderosa en manos equivocadas.</field>
+            <field name="numPaginas">370</field>
+            <field name="precio">21.50</field>
+            <field name="is_available">True</field>
+            <field name="publication_date">2021-11-03</field>
+        </record>
+
+        <!-- 20 -->
+        <record id="libro_demo_20" model="libreria.libro">
+            <field name="name">Voces del Infinito</field>
+            <field name="description">Un viaje filosófico más allá de los límites conocidos.</field>
+            <field name="numPaginas">295</field>
+            <field name="precio">17.99</field>
+            <field name="is_available">True</field>
+            <field name="publication_date">2017-02-14</field>
+        </record>
+
+    </data>
+</odoo>
