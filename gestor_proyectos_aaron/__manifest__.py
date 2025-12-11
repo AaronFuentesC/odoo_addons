@@ -1,5 +1,5 @@
 {
-    'name': "gestorProyectosAaron",
+    'name': "Gestor de proyectos",
 
     'summary': "Gestor de proyectos desarrollado por Aarón Fuentes Casanova",
 
@@ -20,10 +20,12 @@ Gestor de proyectos junto con sus actividades y tareas desarrollado por Aarón F
     'depends': ['base'],
 
     # always loaded
-    'data': [
-        'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+    "data": [
+        "security/ir.model.access.csv",
+        "views/trabajo.xml",
+        "views/templates.xml",
+        "views/proyecto.xml",
+        #"views/actividad.xml"
     ],
     # only loaded in demonstration mode
     'demo': [
