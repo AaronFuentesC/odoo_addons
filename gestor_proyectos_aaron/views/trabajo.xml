@@ -30,7 +30,7 @@
 
 
     <menuitem name="Trabajos" id="gestor_proyectos_aaron.menu_2_list" parent="gestor_proyectos_aaron.menu_1"
-            action="gestor_proyectos_aaron.trabajo_action_window"/>
+        action="gestor_proyectos_aaron.trabajo_action_window"/>
 
     </data>
 </odoo>
