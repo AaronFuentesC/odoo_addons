@@ -25,7 +25,7 @@ Gestor de proyectos junto con sus actividades y tareas desarrollado por Aarón F
         "views/trabajo.xml",
         "views/templates.xml",
         "views/proyecto.xml",
-        #"views/actividad.xml"
+        "views/actividad.xml"
     ],
     # only loaded in demonstration mode
     'demo': [

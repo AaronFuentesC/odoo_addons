@@ -22,6 +22,22 @@ class proyecto(models.Model):
     #porcentajeAvance = fields.Float()
     porcentajeIndividual = fields.Integer(string = "Porcentaje individual")
 
+    state = fields.Selection(
+        [
+            ('draft', 'Borrador'),
+            ('planning', 'En planificación'),
+            ('running', 'En ejecución'),
+            ('done', 'Finalizado'),
+            ('cancel', 'Cancelado'),
+        ],
+        string="Estado",
+        default='draft'
+    )
+
+    
+
+
+
     trabajos_ids = fields.One2many(
         'gestor_proyectos_aaron.trabajo',
         'proyecto_id',

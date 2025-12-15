@@ -1,0 +1,36 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="gestor_proyectos_aaron.actividad_list">
+      <field name="name">Lista de actividades</field>
+      <field name="model">gestor_proyectos_aaron.actividad</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="descripcionTrabajo"/>
+          <field name="fechaInicio"/>
+          <field name="fechaFin"/>
+          <field name="responsableActividad"/>
+          <field name="trabajo_id"/>
+          <field name="state"/>
+
+        </list>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="gestor_proyectos_aaron.actividad_action_window">
+      <field name="name">Vista de actividades</field>
+      <field name="res_model">gestor_proyectos_aaron.actividad</field>
+      <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- actions -->
+
+    <menuitem name="Actividades" id="gestor_proyectos_aaron.menu_3_list" parent="gestor_proyectos_aaron.menu_1"
+        action="gestor_proyectos_aaron.actividad_action_window"/>
+
+  </data>
+</odoo>

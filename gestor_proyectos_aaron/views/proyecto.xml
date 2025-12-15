@@ -13,6 +13,8 @@
           <field name="fechaFin"/>
           <field name="responsableProyecto"/>
           <field name="porcentajeIndividual"/>
+          <field name="state"/>
+
 
         </list>
       </field>
@@ -27,6 +29,20 @@
       <field name="view_mode">list,form</field>
     </record>
 
+<!--
+
+        <record model="ir.ui.view" id="gestor_proyectos_aaron.proyecto_form">
+          <field name="trabajos_ids" context="{'default_proyecto_id': active_id}">
+    <list editable="bottom">
+        <field name="descripcionTrabajo"/>
+        <field name="state"/>
+        <field name="fechaInicio"/>
+        <field name="fechaFin"/>
+    </list>
+</field>
+
+        </record>
+        -->
 
     <!-- server action to the one above -->
 <!--

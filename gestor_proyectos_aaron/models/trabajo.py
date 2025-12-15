@@ -7,10 +7,25 @@ class trabajo(models.Model):
     descripcionTrabajo = fields.Char(string = "Descripción del trabajo")
     fechaInicio = fields.Date(string = "Fecha de inicio")
     fechaFin = fields.Date(string = "Fecha de fin")
-    #estadoTrabajo = fields.Text() 
     responsableTrabajo = fields.Text(string = "Responsable del trabajo")
     #importanciaActividades = fields.Text()
     #promedioDeAvance = fields.Integer(string = "Porcentaje individual")
+
+
+    state = fields.Selection(
+        [
+            ('pending', 'Pendiente'),
+            ('progress', 'En progreso'),
+            ('review', 'En revisión'),
+            ('done', 'Finalizado'),
+        ],
+        string="Estado",
+        default='pending'
+    )
+
+
+
+
     proyecto_id = fields.Many2one(
         'gestor_proyectos_aaron.proyecto',
         string="Id proyecto",
