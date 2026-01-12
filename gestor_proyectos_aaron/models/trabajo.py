@@ -7,21 +7,37 @@ class trabajo(models.Model):
     descripcionTrabajo = fields.Char(string = "Descripción del trabajo")
     fechaInicio = fields.Date(string = "Fecha de inicio")
     fechaFin = fields.Date(string = "Fecha de fin")
-    responsableTrabajo = fields.Text(string = "Responsable del trabajo")
+    responsableTrabajo = fields.Many2one('res.users',string='Resposable del trabajo')
     #importanciaActividades = fields.Text()
     #promedioDeAvance = fields.Integer(string = "Porcentaje individual")
 
-
-    state = fields.Selection(
-        [
-            ('pending', 'Pendiente'),
-            ('progress', 'En progreso'),
-            ('review', 'En revisión'),
-            ('done', 'Finalizado'),
-        ],
-        string="Estado",
-        default='pending'
+    
+    porcentaje_avance = fields.Float(
+    string="Progreso del trabajo (%)",
+    compute="_compute_porcentaje_avance",
+    store=True
     )
+    @api.depends('actividades_ids.state_id')
+    def _compute_porcentaje_avance(self):
+        for trabajo in self:
+            total = len(trabajo.actividades_ids)
+
+            if total == 0:
+                trabajo.porcentaje_avance = 0.0
+            else:
+                actividades_finalizadas = trabajo.actividades_ids.filtered(
+                    lambda t: t.state_id.code == 'done'
+                )
+                trabajo.porcentaje_avance = (len(actividades_finalizadas) / total) * 100
+        
+
+
+
+    state_id = fields.Many2one(
+        'gestor_proyectos_aaron.estado',
+        string="Estado"
+    )
+
 
 
 

@@ -12,11 +12,12 @@
           <field name="fechaFin"/>
           <field name="responsableActividad"/>
           <field name="trabajo_id"/>
-          <field name="state"/>
+          <field name="state_id"/>
 
         </list>
       </field>
     </record>
+    
 
 
     <!-- actions opening views on models -->

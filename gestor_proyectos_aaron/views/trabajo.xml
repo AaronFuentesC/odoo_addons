@@ -13,7 +13,27 @@
             <field name="fechaFin"/>
             <field name="responsableTrabajo"/>
             <field name = "proyecto_id"/>
-            <field name="state"/>
+            <field name="state_id"/>
+            <field name="porcentaje_avance" widget="progressbar"/>
+
+
+
+        </list>
+        </field>
+    </record>
+
+
+
+        <record model="ir.ui.view" id="gestor_proyectos_aaron.trabajo_list">
+        <field name="name">Lista de trabajos</field>
+        <field name="model">gestor_proyectos_aaron.trabajo</field>
+        <field name="arch" type="xml">
+        <list>
+            <field name="descripcionTrabajo"/>
+            <field name="fechaInicio"/>
+            <field name="fechaFin"/>
+            <field name = "responsableTrabajo"/>
+            <field name="state_id"/>
 
 
         </list>
@@ -22,7 +42,7 @@
     
 
     <record model="ir.actions.act_window" id="gestor_proyectos_aaron.trabajo_action_window">
-        <field name="name">Vista de proyectos</field>
+        <field name="name">Vista de trabajos</field>
         <field name="res_model">gestor_proyectos_aaron.trabajo</field>
         <field name="view_mode">list,form</field>
     </record>

@@ -13,7 +13,8 @@
           <field name="fechaFin"/>
           <field name="responsableProyecto"/>
           <field name="porcentajeIndividual"/>
-          <field name="state"/>
+          <field name="state_id"/>
+          <field name="porcentaje_avance" widget="progressbar"/>
 
 
         </list>
@@ -29,36 +30,34 @@
       <field name="view_mode">list,form</field>
     </record>
 
-<!--
-
-        <record model="ir.ui.view" id="gestor_proyectos_aaron.proyecto_form">
-          <field name="trabajos_ids" context="{'default_proyecto_id': active_id}">
-    <list editable="bottom">
-        <field name="descripcionTrabajo"/>
-        <field name="state"/>
-        <field name="fechaInicio"/>
-        <field name="fechaFin"/>
-    </list>
-</field>
-
-        </record>
-        -->
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="gestor_proyectos_aaron.action_server">
-      <field name="name">gestorProyectosAaron server</field>
-      <field name="model_id" ref="model_gestor_proyectos_aaron_gestor_proyectos_aaron"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "list,form",
-          "res_model": model._name,
-        }
+<!-- Vista de formulario para autores -->
+    <record id="view_proyecto_form" model="ir.ui.view">
+      <field name="name">Formulario de proyectos</field>
+      <field name="model">gestor_proyectos_aaron.proyecto</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="nombreProyecto"/>
+              <field name="descripcionProyecto"/>
+              <field name="fechaInicio"/>
+              <field name="fechaFin"/>
+            </group>
+            <group>
+              <field name="responsableProyecto"/>
+              <field name="porcentajeIndividual"/>
+              <field name="state_id"/>
+            </group>
+            <notebook>
+              <page name="Trabajos asociados" string="Trabajos asociados">
+                <field name="trabajos_ids"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
       </field>
     </record>
--->
+
 
     <!-- Top menu item -->
 
@@ -66,7 +65,7 @@
 
     <!-- menu categories -->
 
-    <menuitem name="Menu 1" id="gestor_proyectos_aaron.menu_1" parent="gestor_proyectos_aaron.menu_root"/>
+    <menuitem name="Menu trabajos" id="gestor_proyectos_aaron.menu_1" parent="gestor_proyectos_aaron.menu_root"/>
 
     <!-- actions -->
 
