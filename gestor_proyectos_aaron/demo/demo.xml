@@ -1,30 +1,94 @@
-<odoo>
-    <data>
-<!--
-          <record id="object0" model="gestor_proyectos_aaron.gestor_proyectos_aaron">
-            <field name="name">Object 0</field>
-            <field name="value">0</field>
-          </record>
+<odoo noupdate="1">
+    <!-- 1️⃣ Estados -->
+    <record id="estado_pendiente" model="gestor_proyectos_aaron.estado">
+        <field name="name">Pendiente</field>
+        <field name="code">pending</field>
+    </record>
 
-          <record id="object1" model="gestor_proyectos_aaron.gestor_proyectos_aaron">
-            <field name="name">Object 1</field>
-            <field name="value">10</field>
-          </record>
+    <record id="estado_en_progreso" model="gestor_proyectos_aaron.estado">
+        <field name="name">En progreso</field>
+        <field name="code">in_progress</field>
+    </record>
 
-          <record id="object2" model="gestor_proyectos_aaron.gestor_proyectos_aaron">
-            <field name="name">Object 2</field>
-            <field name="value">20</field>
-          </record>
+    <record id="estado_finalizado" model="gestor_proyectos_aaron.estado">
+        <field name="name">Finalizado</field>
+        <field name="code">done</field>
+    </record>
 
-          <record id="object3" model="gestor_proyectos_aaron.gestor_proyectos_aaron">
-            <field name="name">Object 3</field>
-            <field name="value">30</field>
-          </record>
+    <!-- 2️⃣ Usuarios (ejemplo de responsables) -->
+    <record id="usuario_juan" model="res.users">
+        <field name="name">Juan Pérez</field>
+        <field name="login">juan</field>
+    </record>
 
-          <record id="object4" model="gestor_proyectos_aaron.gestor_proyectos_aaron">
-            <field name="name">Object 4</field>
-            <field name="value">40</field>
-          </record>
--->
-    </data>
+    <record id="usuario_maria" model="res.users">
+        <field name="name">María López</field>
+        <field name="login">maria</field>
+    </record>
+
+    <!-- 3️⃣ Proyecto de prueba -->
+    <record id="proyecto_demo_1" model="gestor_proyectos_aaron.proyecto">
+        <field name="nombreProyecto">Proyecto Demo 1</field>
+        <field name="descripcionProyecto">Proyecto de prueba para demo</field>
+        <field name="fechaInicio">2026-01-10</field>
+        <field name="fechaFin">2026-01-20</field>
+        <field name="responsableProyecto" ref="usuario_juan"/>
+        <field name="state_id" ref="estado_pendiente"/>
+    </record>
+
+    <!-- 4️⃣ Trabajos asociados al proyecto -->
+    <record id="trabajo_demo_1" model="gestor_proyectos_aaron.trabajo">
+        <field name="descripcionTrabajo">Trabajo 1</field>
+        <field name="fechaInicio">2026-01-10</field>
+        <field name="fechaFin">2026-01-12</field>
+        <field name="responsableTrabajo" ref="usuario_juan"/>
+        <field name="proyecto_id" ref="proyecto_demo_1"/>
+        <field name="state_id" ref="estado_pendiente"/>
+    </record>
+
+    <record id="trabajo_demo_2" model="gestor_proyectos_aaron.trabajo">
+        <field name="descripcionTrabajo">Trabajo 2</field>
+        <field name="fechaInicio">2026-01-12</field>
+        <field name="fechaFin">2026-01-15</field>
+        <field name="responsableTrabajo" ref="usuario_maria"/>
+        <field name="proyecto_id" ref="proyecto_demo_1"/>
+        <field name="state_id" ref="estado_pendiente"/>
+    </record>
+
+    <!-- 5️⃣ Actividades asociadas a los trabajos -->
+    <record id="actividad_demo_1" model="gestor_proyectos_aaron.actividad">
+        <field name="descripcionActividad">Actividad 1 del Trabajo 1</field>
+        <field name="fechaInicio">2026-01-10</field>
+        <field name="fechaFin">2026-01-11</field>
+        <field name="responsableActividad" ref="usuario_juan"/>
+        <field name="trabajo_id" ref="trabajo_demo_1"/>
+        <field name="state_id" ref="estado_pendiente"/>
+    </record>
+
+    <record id="actividad_demo_2" model="gestor_proyectos_aaron.actividad">
+        <field name="descripcionActividad">Actividad 2 del Trabajo 1</field>
+        <field name="fechaInicio">2026-01-11</field>
+        <field name="fechaFin">2026-01-12</field>
+        <field name="responsableActividad" ref="usuario_juan"/>
+        <field name="trabajo_id" ref="trabajo_demo_1"/>
+        <field name="state_id" ref="estado_pendiente"/>
+    </record>
+
+    <record id="actividad_demo_3" model="gestor_proyectos_aaron.actividad">
+        <field name="descripcionActividad">Actividad 1 del Trabajo 2</field>
+        <field name="fechaInicio">2026-01-12</field>
+        <field name="fechaFin">2026-01-14</field>
+        <field name="responsableActividad" ref="usuario_maria"/>
+        <field name="trabajo_id" ref="trabajo_demo_2"/>
+        <field name="state_id" ref="estado_pendiente"/>
+    </record>
+
+    <record id="actividad_demo_4" model="gestor_proyectos_aaron.actividad">
+        <field name="descripcionActividad">Actividad 2 del Trabajo 2</field>
+        <field name="fechaInicio">2026-01-14</field>
+        <field name="fechaFin">2026-01-15</field>
+        <field name="responsableActividad" ref="usuario_maria"/>
+        <field name="trabajo_id" ref="trabajo_demo_2"/>
+        <field name="state_id" ref="estado_pendiente"/>
+    </record>
 </odoo>

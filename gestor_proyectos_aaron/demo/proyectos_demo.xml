@@ -1,0 +1,35 @@
+<odoo>
+    <data noupdate="1">
+
+        <!-- Proyecto 1: En progreso -->
+        <record id="proyecto_web" model="gestor_proyectos_aaron.proyecto">
+            <field name="nombreProyecto">Web corporativa</field>
+            <field name="descripcionProyecto">Desarrollo de la web corporativa</field>
+            <field name="fechaInicio">2025-01-01</field>
+            <field name="fechaFin">2025-03-01</field>
+            <field name="responsableProyecto" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_progreso"/>
+        </record>
+
+        <!-- Proyecto 2: Pendiente -->
+        <record id="proyecto_app" model="gestor_proyectos_aaron.proyecto">
+            <field name="nombreProyecto">App móvil</field>
+            <field name="descripcionProyecto">Aplicación móvil Android/iOS</field>
+            <field name="fechaInicio">2025-02-01</field>
+            <field name="fechaFin">2025-06-01</field>
+            <field name="responsableProyecto" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_pendiente"/>
+        </record>
+
+        <!-- Proyecto 3: Se finalizará automáticamente -->
+        <record id="proyecto_infra" model="gestor_proyectos_aaron.proyecto">
+            <field name="nombreProyecto">Infraestructura</field>
+            <field name="descripcionProyecto">Migración de servidores</field>
+            <field name="fechaInicio">2024-11-01</field>
+            <field name="fechaFin">2025-01-15</field>
+            <field name="responsableProyecto" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_progreso"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,43 @@
+<odoo>
+    <data noupdate="1">
+
+        <!-- Actividades Diseño Web (100%) -->
+        <record id="act_wireframes" model="gestor_proyectos_aaron.actividad">
+            <field name="descripcionTrabajo">Wireframes</field>
+            <field name="trabajo_id" ref="gestor_proyectos_aaron.trabajo_diseno"/>
+            <field name="responsableActividad" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_done"/>
+        </record>
+
+        <record id="act_mockups" model="gestor_proyectos_aaron.actividad">
+            <field name="descripcionTrabajo">Mockups</field>
+            <field name="trabajo_id" ref="gestor_proyectos_aaron.trabajo_diseno"/>
+            <field name="responsableActividad" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_done"/>
+        </record>
+
+        <!-- Actividades Backend (50%) -->
+        <record id="act_api" model="gestor_proyectos_aaron.actividad">
+            <field name="descripcionTrabajo">API REST</field>
+            <field name="trabajo_id" ref="gestor_proyectos_aaron.trabajo_backend"/>
+            <field name="responsableActividad" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_done"/>
+        </record>
+
+        <record id="act_auth" model="gestor_proyectos_aaron.actividad">
+            <field name="descripcionTrabajo">Autenticación</field>
+            <field name="trabajo_id" ref="gestor_proyectos_aaron.trabajo_backend"/>
+            <field name="responsableActividad" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_progreso"/>
+        </record>
+
+        <!-- Actividades Infra (100%) -->
+        <record id="act_servidor" model="gestor_proyectos_aaron.actividad">
+            <field name="descripcionTrabajo">Instalación servidor</field>
+            <field name="trabajo_id" ref="gestor_proyectos_aaron.trabajo_servidores"/>
+            <field name="responsableActividad" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_done"/>
+        </record>
+
+    </data>
+</odoo>

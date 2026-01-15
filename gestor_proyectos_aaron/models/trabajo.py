@@ -17,6 +17,12 @@ class trabajo(models.Model):
     compute="_compute_porcentaje_avance",
     store=True
     )
+
+        
+
+
+
+
     @api.depends('actividades_ids.state_id')
     def _compute_porcentaje_avance(self):
         for trabajo in self:
@@ -26,10 +32,16 @@ class trabajo(models.Model):
                 trabajo.porcentaje_avance = 0.0
             else:
                 actividades_finalizadas = trabajo.actividades_ids.filtered(
-                    lambda t: t.state_id.code == 'done'
+                    lambda a: a.state_id.code == 'done'
                 )
                 trabajo.porcentaje_avance = (len(actividades_finalizadas) / total) * 100
-        
+
+            if trabajo.porcentaje_avance == 100.0:
+                estado_final = self.env['gestor_proyectos_aaron.estado'].search(
+                    [('code', '=', 'done')], limit=1
+                )
+                if estado_final:
+                    trabajo.state_id = estado_final
 
 
 

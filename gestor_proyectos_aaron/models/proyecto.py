@@ -17,16 +17,14 @@ class proyecto(models.Model):
     descripcionProyecto = fields.Char(string = "Descripción del proyecto")
     fechaInicio = fields.Date(string = "Fecha de inicio")
     fechaFin = fields.Date(string = "Fecha de fin")
-    #estadoProyecto = fields.Text()
     responsableProyecto = fields.Many2one('res.users',string='Resposable del proyecto')
-    #porcentajeAvance = fields.Float()
-    porcentajeIndividual = fields.Integer(string = "Porcentaje individual")
 
     porcentaje_avance = fields.Float(
     string="Progreso del proyecto (%)",
     compute="_compute_porcentaje_avance",
     store=True
     )
+
     @api.depends('trabajos_ids.state_id')
     def _compute_porcentaje_avance(self):
         for proyecto in self:
@@ -39,6 +37,11 @@ class proyecto(models.Model):
                     lambda t: t.state_id.code == 'done'
                 )
                 proyecto.porcentaje_avance = (len(trabajos_finalizados) / total) * 100
+
+            if proyecto.porcentaje_avance == 100.0:
+                estado_final = self.env['gestor_proyectos_aaron.estado'].search([('code', '=', 'done')], limit=1)
+                if estado_final:
+                    proyecto.state_id = estado_final
 
 
     state_id = fields.Many2one(

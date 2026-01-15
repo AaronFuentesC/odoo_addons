@@ -1,0 +1,20 @@
+<odoo>
+    <data noupdate="1">
+
+        <record id="estado_pendiente" model="gestor_proyectos_aaron.estado">
+            <field name="name">Pendiente</field>
+            <field name="code">pending</field>
+        </record>
+
+        <record id="estado_progreso" model="gestor_proyectos_aaron.estado">
+            <field name="name">En progreso</field>
+            <field name="code">progress</field>
+        </record>
+
+        <record id="estado_done" model="gestor_proyectos_aaron.estado">
+            <field name="name">Finalizado</field>
+            <field name="code">done</field>
+        </record>
+
+    </data>
+</odoo>

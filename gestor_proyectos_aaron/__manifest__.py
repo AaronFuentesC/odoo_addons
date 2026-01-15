@@ -22,6 +22,7 @@ Gestor de proyectos junto con sus actividades y tareas desarrollado por Aarón F
     # always loaded
     "data": [
         "security/ir.model.access.csv",
+        "views/views.xml",
         "views/trabajo.xml",
         "views/templates.xml",
         "views/proyecto.xml",
@@ -30,7 +31,10 @@ Gestor de proyectos junto con sus actividades y tareas desarrollado por Aarón F
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/demo.xml',
+        'demo/estados_demo.xml',
+        'demo/proyectos_demo.xml',
+        'demo/trabajos_demo.xml',
+        'demo/actividades_demo.xml',
     ],
 }
 

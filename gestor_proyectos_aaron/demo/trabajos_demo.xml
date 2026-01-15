@@ -1,0 +1,36 @@
+<odoo>
+    <data noupdate="1">
+
+        <!-- Trabajos proyecto Web -->
+        <record id="trabajo_diseno" model="gestor_proyectos_aaron.trabajo">
+            <field name="descripcionTrabajo">Diseño UX/UI</field>
+            <field name="proyecto_id" ref="gestor_proyectos_aaron.proyecto_web"/>
+            <field name="responsableTrabajo" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_done"/>
+        </record>
+
+        <record id="trabajo_backend" model="gestor_proyectos_aaron.trabajo">
+            <field name="descripcionTrabajo">Backend</field>
+            <field name="proyecto_id" ref="gestor_proyectos_aaron.proyecto_web"/>
+            <field name="responsableTrabajo" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_progreso"/>
+        </record>
+
+        <!-- Trabajos proyecto App -->
+        <record id="trabajo_app_diseno" model="gestor_proyectos_aaron.trabajo">
+            <field name="descripcionTrabajo">Diseño App</field>
+            <field name="proyecto_id" ref="gestor_proyectos_aaron.proyecto_app"/>
+            <field name="responsableTrabajo" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_pendiente"/>
+        </record>
+
+        <!-- Trabajos proyecto Infra (todos se finalizarán) -->
+        <record id="trabajo_servidores" model="gestor_proyectos_aaron.trabajo">
+            <field name="descripcionTrabajo">Configuración servidores</field>
+            <field name="proyecto_id" ref="gestor_proyectos_aaron.proyecto_infra"/>
+            <field name="responsableTrabajo" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_done"/>
+        </record>
+
+    </data>
+</odoo>
