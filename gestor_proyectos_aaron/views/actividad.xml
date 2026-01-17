@@ -13,7 +13,7 @@
           <field name="responsableActividad"/>
           <field name="trabajo_id"/>
           <field name="state_id"/>
-          <field name="porcentajeIndividual"/>
+          <field name="porcentajeIndividual" widget="progressbar"/>
 
         </list>
       </field>
@@ -40,6 +40,7 @@
         </form>
       </field>
     </record>
+    
     
 
 

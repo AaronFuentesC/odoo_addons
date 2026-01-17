@@ -1,94 +1,149 @@
-<odoo noupdate="1">
-    <!-- 1️⃣ Estados -->
-    <record id="estado_pendiente" model="gestor_proyectos_aaron.estado">
-        <field name="name">Pendiente</field>
-        <field name="code">pending</field>
-    </record>
+<odoo>
+    <data noupdate="1">
 
-    <record id="estado_en_progreso" model="gestor_proyectos_aaron.estado">
-        <field name="name">En progreso</field>
-        <field name="code">in_progress</field>
-    </record>
+        <!-- ===================== -->
+        <!-- ESTADOS -->
+        <!-- ===================== -->
 
-    <record id="estado_finalizado" model="gestor_proyectos_aaron.estado">
-        <field name="name">Finalizado</field>
-        <field name="code">done</field>
-    </record>
+        <record id="estado_pendiente" model="gestor_proyectos_aaron.estado">
+            <field name="name">Pendiente</field>
+            <field name="code">pending</field>
+        </record>
 
-    <!-- 2️⃣ Usuarios (ejemplo de responsables) -->
-    <record id="usuario_juan" model="res.users">
-        <field name="name">Juan Pérez</field>
-        <field name="login">juan</field>
-    </record>
+        <record id="estado_progreso" model="gestor_proyectos_aaron.estado">
+            <field name="name">En progreso</field>
+            <field name="code">progress</field>
+        </record>
 
-    <record id="usuario_maria" model="res.users">
-        <field name="name">María López</field>
-        <field name="login">maria</field>
-    </record>
+        <record id="estado_done" model="gestor_proyectos_aaron.estado">
+            <field name="name">Finalizado</field>
+            <field name="code">done</field>
+        </record>
 
-    <!-- 3️⃣ Proyecto de prueba -->
-    <record id="proyecto_demo_1" model="gestor_proyectos_aaron.proyecto">
-        <field name="nombreProyecto">Proyecto Demo 1</field>
-        <field name="descripcionProyecto">Proyecto de prueba para demo</field>
-        <field name="fechaInicio">2026-01-10</field>
-        <field name="fechaFin">2026-01-20</field>
-        <field name="responsableProyecto" ref="usuario_juan"/>
-        <field name="state_id" ref="estado_pendiente"/>
-    </record>
+        <!-- ===================== -->
+        <!-- PROYECTOS -->
+        <!-- ===================== -->
 
-    <!-- 4️⃣ Trabajos asociados al proyecto -->
-    <record id="trabajo_demo_1" model="gestor_proyectos_aaron.trabajo">
-        <field name="descripcionTrabajo">Trabajo 1</field>
-        <field name="fechaInicio">2026-01-10</field>
-        <field name="fechaFin">2026-01-12</field>
-        <field name="responsableTrabajo" ref="usuario_juan"/>
-        <field name="proyecto_id" ref="proyecto_demo_1"/>
-        <field name="state_id" ref="estado_pendiente"/>
-    </record>
+        <record id="proyecto_web" model="gestor_proyectos_aaron.proyecto">
+            <field name="nombreProyecto">Web corporativa</field>
+            <field name="descripcionProyecto">Desarrollo de la web corporativa</field>
+            <field name="fechaInicio">2025-01-01</field>
+            <field name="fechaFin">2025-03-01</field>
+            <field name="responsableProyecto" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_progreso"/>
+        </record>
 
-    <record id="trabajo_demo_2" model="gestor_proyectos_aaron.trabajo">
-        <field name="descripcionTrabajo">Trabajo 2</field>
-        <field name="fechaInicio">2026-01-12</field>
-        <field name="fechaFin">2026-01-15</field>
-        <field name="responsableTrabajo" ref="usuario_maria"/>
-        <field name="proyecto_id" ref="proyecto_demo_1"/>
-        <field name="state_id" ref="estado_pendiente"/>
-    </record>
+        <record id="proyecto_app" model="gestor_proyectos_aaron.proyecto">
+            <field name="nombreProyecto">App móvil</field>
+            <field name="descripcionProyecto">Aplicación móvil Android e iOS</field>
+            <field name="fechaInicio">2025-02-01</field>
+            <field name="fechaFin">2025-06-01</field>
+            <field name="responsableProyecto" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_pendiente"/>
+        </record>
 
-    <!-- 5️⃣ Actividades asociadas a los trabajos -->
-    <record id="actividad_demo_1" model="gestor_proyectos_aaron.actividad">
-        <field name="descripcionActividad">Actividad 1 del Trabajo 1</field>
-        <field name="fechaInicio">2026-01-10</field>
-        <field name="fechaFin">2026-01-11</field>
-        <field name="responsableActividad" ref="usuario_juan"/>
-        <field name="trabajo_id" ref="trabajo_demo_1"/>
-        <field name="state_id" ref="estado_pendiente"/>
-    </record>
+        <record id="proyecto_infra" model="gestor_proyectos_aaron.proyecto">
+            <field name="nombreProyecto">Infraestructura</field>
+            <field name="descripcionProyecto">Migración y configuración de servidores</field>
+            <field name="fechaInicio">2024-11-01</field>
+            <field name="fechaFin">2025-01-15</field>
+            <field name="responsableProyecto" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_done"/>
+        </record>
 
-    <record id="actividad_demo_2" model="gestor_proyectos_aaron.actividad">
-        <field name="descripcionActividad">Actividad 2 del Trabajo 1</field>
-        <field name="fechaInicio">2026-01-11</field>
-        <field name="fechaFin">2026-01-12</field>
-        <field name="responsableActividad" ref="usuario_juan"/>
-        <field name="trabajo_id" ref="trabajo_demo_1"/>
-        <field name="state_id" ref="estado_pendiente"/>
-    </record>
+        <!-- ===================== -->
+        <!-- TRABAJOS -->
+        <!-- ===================== -->
 
-    <record id="actividad_demo_3" model="gestor_proyectos_aaron.actividad">
-        <field name="descripcionActividad">Actividad 1 del Trabajo 2</field>
-        <field name="fechaInicio">2026-01-12</field>
-        <field name="fechaFin">2026-01-14</field>
-        <field name="responsableActividad" ref="usuario_maria"/>
-        <field name="trabajo_id" ref="trabajo_demo_2"/>
-        <field name="state_id" ref="estado_pendiente"/>
-    </record>
+        <record id="trabajo_diseno" model="gestor_proyectos_aaron.trabajo">
+            <field name="descripcionTrabajo">Diseño UX/UI</field>
+            <field name="fechaInicio">2025-01-01</field>
+            <field name="fechaFin">2025-01-31</field>
+            <field name="proyecto_id" ref="gestor_proyectos_aaron.proyecto_web"/>
+            <field name="responsableTrabajo" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_progreso"/>
+        </record>
 
-    <record id="actividad_demo_4" model="gestor_proyectos_aaron.actividad">
-        <field name="descripcionActividad">Actividad 2 del Trabajo 2</field>
-        <field name="fechaInicio">2026-01-14</field>
-        <field name="fechaFin">2026-01-15</field>
-        <field name="responsableActividad" ref="usuario_maria"/>
-        <field name="trabajo_id" ref="trabajo_demo_2"/>
-        <field name="state_id" ref="estado_pendiente"/>
-    </record>
+        <record id="trabajo_backend" model="gestor_proyectos_aaron.trabajo">
+            <field name="descripcionTrabajo">Desarrollo Backend</field>
+            <field name="fechaInicio">2025-02-01</field>
+            <field name="fechaFin">2025-03-01</field>
+            <field name="proyecto_id" ref="gestor_proyectos_aaron.proyecto_web"/>
+            <field name="responsableTrabajo" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_progreso"/>
+        </record>
+
+        <record id="trabajo_app_diseno" model="gestor_proyectos_aaron.trabajo">
+            <field name="descripcionTrabajo">Diseño de la app</field>
+            <field name="fechaInicio">2025-02-01</field>
+            <field name="fechaFin">2025-03-15</field>
+            <field name="proyecto_id" ref="gestor_proyectos_aaron.proyecto_app"/>
+            <field name="responsableTrabajo" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_pendiente"/>
+        </record>
+
+        <record id="trabajo_servidores" model="gestor_proyectos_aaron.trabajo">
+            <field name="descripcionTrabajo">Configuración de servidores</field>
+            <field name="fechaInicio">2024-11-01</field>
+            <field name="fechaFin">2025-01-15</field>
+            <field name="proyecto_id" ref="gestor_proyectos_aaron.proyecto_infra"/>
+            <field name="responsableTrabajo" ref="base.user_admin"/>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_done"/>
+        </record>
+
+        <!-- ===================== -->
+        <!-- ACTIVIDADES -->
+        <!-- ===================== -->
+
+        <record id="act_wireframes" model="gestor_proyectos_aaron.actividad">
+            <field name="descripcionActividad">Wireframes</field>
+            <field name="fechaInicio">2025-01-01</field>
+            <field name="fechaFin">2025-01-10</field>
+            <field name="trabajo_id" ref="gestor_proyectos_aaron.trabajo_diseno"/>
+            <field name="responsableActividad" ref="base.user_admin"/>
+            <field name="porcentajeIndividual">100</field>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_done"/>
+        </record>
+
+        <record id="act_mockups" model="gestor_proyectos_aaron.actividad">
+            <field name="descripcionActividad">Mockups</field>
+            <field name="fechaInicio">2025-01-11</field>
+            <field name="fechaFin">2025-01-31</field>
+            <field name="trabajo_id" ref="gestor_proyectos_aaron.trabajo_diseno"/>
+            <field name="responsableActividad" ref="base.user_admin"/>
+            <field name="porcentajeIndividual">50</field>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_progreso"/>
+        </record>
+
+        <record id="act_api" model="gestor_proyectos_aaron.actividad">
+            <field name="descripcionActividad">API REST</field>
+            <field name="fechaInicio">2025-02-01</field>
+            <field name="fechaFin">2025-02-15</field>
+            <field name="trabajo_id" ref="gestor_proyectos_aaron.trabajo_backend"/>
+            <field name="responsableActividad" ref="base.user_admin"/>
+            <field name="porcentajeIndividual">20</field>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_progreso"/>
+        </record>
+
+        <record id="act_auth" model="gestor_proyectos_aaron.actividad">
+            <field name="descripcionActividad">Sistema de autenticación</field>
+            <field name="fechaInicio">2025-02-16</field>
+            <field name="fechaFin">2025-03-01</field>
+            <field name="trabajo_id" ref="gestor_proyectos_aaron.trabajo_backend"/>
+            <field name="responsableActividad" ref="base.user_admin"/>
+            <field name="porcentajeIndividual">80</field>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_progreso"/>
+        </record>
+
+        <record id="act_servidor" model="gestor_proyectos_aaron.actividad">
+            <field name="descripcionActividad">Instalación y despliegue</field>
+            <field name="fechaInicio">2024-11-01</field>
+            <field name="fechaFin">2025-01-15</field>
+            <field name="trabajo_id" ref="gestor_proyectos_aaron.trabajo_servidores"/>
+            <field name="responsableActividad" ref="base.user_admin"/>
+            <field name="porcentajeIndividual">100</field>
+            <field name="state_id" ref="gestor_proyectos_aaron.estado_done"/>
+        </record>
+
+    </data>
 </odoo>

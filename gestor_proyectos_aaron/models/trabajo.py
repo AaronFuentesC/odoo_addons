@@ -1,4 +1,6 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+
 
 class trabajo(models.Model):
     _name = 'gestor_proyectos_aaron.trabajo'
@@ -23,25 +25,62 @@ class trabajo(models.Model):
 
 
 
-    @api.depends('actividades_ids.state_id')
+    @api.depends('actividades_ids.porcentajeIndividual')
     def _compute_porcentaje_avance(self):
+        Estado = self.env['gestor_proyectos_aaron.estado']
+        estado_done = Estado.search([('code', '=', 'done')], limit=1)
+        estado_progress = Estado.search([('code', '=', 'progress')], limit=1)
+        estado_pending = Estado.search([('code', '=', 'pending')], limit=1)
+
         for trabajo in self:
-            total = len(trabajo.actividades_ids)
+            actividades = trabajo.actividades_ids
 
-            if total == 0:
+            if not actividades:
                 trabajo.porcentaje_avance = 0.0
-            else:
-                actividades_finalizadas = trabajo.actividades_ids.filtered(
-                    lambda a: a.state_id.code == 'done'
-                )
-                trabajo.porcentaje_avance = (len(actividades_finalizadas) / total) * 100
+                trabajo.state_id = estado_pending
+                continue
 
+            total = sum(a.porcentajeIndividual for a in actividades)
+            trabajo.porcentaje_avance = total / len(actividades)
+
+            # SINCRONIZACIÓN DE ESTADO
             if trabajo.porcentaje_avance == 100.0:
-                estado_final = self.env['gestor_proyectos_aaron.estado'].search(
-                    [('code', '=', 'done')], limit=1
-                )
-                if estado_final:
-                    trabajo.state_id = estado_final
+                trabajo.state_id = estado_done
+            elif trabajo.porcentaje_avance > 0:
+                trabajo.state_id = estado_progress
+            else:
+                trabajo.state_id = estado_pending
+
+
+
+
+
+
+
+    @api.constrains('fechaInicio', 'fechaFin', 'proyecto_id')
+    def _check_fechas_trabajo_en_proyecto(self):
+        for trabajo in self:
+            proyecto = trabajo.proyecto_id
+            if not proyecto:
+                continue
+
+            if trabajo.fechaInicio and proyecto.fechaInicio:
+                if trabajo.fechaInicio < proyecto.fechaInicio:
+                    raise ValidationError(
+                        "La fecha de inicio del trabajo no puede ser anterior a la del proyecto."
+                    )
+
+            if trabajo.fechaFin and proyecto.fechaFin:
+                if trabajo.fechaFin > proyecto.fechaFin:
+                    raise ValidationError(
+                        "La fecha de fin del trabajo no puede ser posterior a la del proyecto."
+                    )
+
+            if trabajo.fechaInicio and trabajo.fechaFin:
+                if trabajo.fechaInicio > trabajo.fechaFin:
+                    raise ValidationError(
+                        "La fecha de inicio del trabajo no puede ser posterior a la fecha de fin."
+                    )
 
 
 
