@@ -1,29 +1,20 @@
 <odoo>
   <data>
 
-    <!-- Top menu item -->
-
     <menuitem name="Gestor de Proyectos - Aarón" id="gestor_proyectos_aaron.menu_root"/>
 
-    <!-- menu categories -->
-
     <menuitem name="Menu trabajos" id="gestor_proyectos_aaron.menu_1" parent="gestor_proyectos_aaron.menu_root"/>
-
-    <!-- actions -->
 
     <menuitem name="Proyectos" id="gestor_proyectos_aaron.menu_1_list" parent="gestor_proyectos_aaron.menu_1"
               action="gestor_proyectos_aaron.proyecto_action_window"/>
 
-
     <menuitem name="Trabajos" id="gestor_proyectos_aaron.menu_2_list" parent="gestor_proyectos_aaron.menu_1"
         action="gestor_proyectos_aaron.trabajo_action_window"/>
-
 
     <menuitem name="Actividades" id="gestor_proyectos_aaron.menu_3_list" parent="gestor_proyectos_aaron.menu_1"
         action="gestor_proyectos_aaron.actividad_action_window"/>
 
-
-    <menuitem name="Estados" id="gestor_proyectos_aaron.menu_4_list" parent="gestor_proyectos_aaron.menu_1"
+    <menuitem name="Estados" id="gestor_proyectos_aaron.menu_2" parent="gestor_proyectos_aaron.menu_root"
         action="gestor_proyectos_aaron.estado_action_window"/>
 
 

@@ -1,16 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import UserError
 
-
-
-
-#Nombre del proyecto, Descripción general del proyecto, Fecha de inicio,
-#Fecha de fin, estado del proyecto, responsable del proyecto, porcentaje
-#de avance respecto a partir de trabajos y actividades, relación con
-#trabajos del proyecto, Avance individual (0–100%)
-
-
-
 class proyecto(models.Model):
     _name = 'gestor_proyectos_aaron.proyecto'
     _description = 'gestor_proyectos_aaron.proyecto'
@@ -45,16 +35,12 @@ class proyecto(models.Model):
             total = sum(t.porcentaje_avance for t in trabajos)
             proyecto.porcentaje_avance = total / len(trabajos)
 
-            # SINCRONIZACIÓN DE ESTADO
             if proyecto.porcentaje_avance == 100.0:
                 proyecto.state_id = estado_done
             elif proyecto.porcentaje_avance > 0:
                 proyecto.state_id = estado_progress
             else:
                 proyecto.state_id = estado_pending
-
-
-    
 
     def unlink(self):
         for proyecto in self:
@@ -63,7 +49,6 @@ class proyecto(models.Model):
                     "No se puede eliminar un proyecto que tiene trabajos asociados."
                 )
         return super().unlink()
-
 
     state_id = fields.Many2one(
     'gestor_proyectos_aaron.estado',

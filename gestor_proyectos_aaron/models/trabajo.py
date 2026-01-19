@@ -10,20 +10,12 @@ class trabajo(models.Model):
     fechaInicio = fields.Date(string = "Fecha de inicio")
     fechaFin = fields.Date(string = "Fecha de fin")
     responsableTrabajo = fields.Many2one('res.users',string='Resposable del trabajo')
-    #importanciaActividades = fields.Text()
-    #promedioDeAvance = fields.Integer(string = "Porcentaje individual")
 
-    
     porcentaje_avance = fields.Float(
     string="Progreso del trabajo (%)",
     compute="_compute_porcentaje_avance",
     store=True
     )
-
-        
-
-
-
 
     @api.depends('actividades_ids.porcentajeIndividual')
     def _compute_porcentaje_avance(self):
@@ -43,19 +35,12 @@ class trabajo(models.Model):
             total = sum(a.porcentajeIndividual for a in actividades)
             trabajo.porcentaje_avance = total / len(actividades)
 
-            # SINCRONIZACIÓN DE ESTADO
             if trabajo.porcentaje_avance == 100.0:
                 trabajo.state_id = estado_done
             elif trabajo.porcentaje_avance > 0:
                 trabajo.state_id = estado_progress
             else:
                 trabajo.state_id = estado_pending
-
-
-
-
-
-
 
     @api.constrains('fechaInicio', 'fechaFin', 'proyecto_id')
     def _check_fechas_trabajo_en_proyecto(self):

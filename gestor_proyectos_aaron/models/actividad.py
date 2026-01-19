@@ -1,7 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
-
 class actividad(models.Model):
     _name = 'gestor_proyectos_aaron.actividad'
     _description = 'gestor_proyectos_aaron.actividad'
@@ -28,9 +27,6 @@ class actividad(models.Model):
         store=True
     )
 
-    # -------------------------
-    # VALIDACIÓN PORCENTAJE
-    # -------------------------
     @api.constrains('porcentajeIndividual')
     def _check_porcentaje(self):
         for actividad in self:
@@ -39,9 +35,6 @@ class actividad(models.Model):
                     "El porcentaje de avance debe estar entre 0 y 100."
                 )
 
-    # -------------------------
-    # VALIDACIÓN FECHAS
-    # -------------------------
     @api.constrains('fechaInicio', 'fechaFin', 'trabajo_id')
     def _check_fechas_actividad_en_trabajo(self):
         for actividad in self:
@@ -67,9 +60,6 @@ class actividad(models.Model):
                         "La fecha de inicio no puede ser posterior a la fecha de fin."
                     )
 
-    # -------------------------
-    # ESTADO AUTOMÁTICO
-    # -------------------------
     @api.depends('porcentajeIndividual')
     def _compute_estado_por_porcentaje(self):
         estado_done = self.env['gestor_proyectos_aaron.estado'].search(

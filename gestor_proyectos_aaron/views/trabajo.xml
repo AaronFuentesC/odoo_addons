@@ -19,9 +19,6 @@
         </field>
     </record>
 
-
-
-
         <record model="ir.ui.view" id="gestor_proyectos_aaron.trabajo_form">
         <field name="name">Formulario de trabajos</field>
         <field name="model">gestor_proyectos_aaron.trabajo</field>
