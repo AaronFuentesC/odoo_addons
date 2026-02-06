@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="gestor_vehiculos_aaron.list">
+      <field name="name">gestor_vehiculos_aaron list</field>
+      <field name="model">gestor_vehiculos_aaron.gestor_vehiculos_aaron</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </list>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="gestor_vehiculos_aaron.action_window">
+      <field name="name">gestor_vehiculos_aaron window</field>
+      <field name="res_model">gestor_vehiculos_aaron.gestor_vehiculos_aaron</field>
+      <field name="view_mode">list,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="gestor_vehiculos_aaron.action_server">
+      <field name="name">gestor_vehiculos_aaron server</field>
+      <field name="model_id" ref="model_gestor_vehiculos_aaron_gestor_vehiculos_aaron"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "list,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="gestor_vehiculos_aaron" id="gestor_vehiculos_aaron.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="gestor_vehiculos_aaron.menu_1" parent="gestor_vehiculos_aaron.menu_root"/>
+    <menuitem name="Menu 2" id="gestor_vehiculos_aaron.menu_2" parent="gestor_vehiculos_aaron.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="gestor_vehiculos_aaron.menu_1_list" parent="gestor_vehiculos_aaron.menu_1"
+              action="gestor_vehiculos_aaron.action_window"/>
+    <menuitem name="Server to list" id="gestor_vehiculos_aaron" parent="gestor_vehiculos_aaron.menu_2"
+              action="gestor_vehiculos_aaron.action_server"/>
+-->
+  </data>
+</odoo>

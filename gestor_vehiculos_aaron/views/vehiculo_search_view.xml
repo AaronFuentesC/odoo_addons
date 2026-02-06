@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_vehiculo_search" model="ir.ui.view">
+        <field name="name">gestor_vehiculos_aaron.vehiculo.search</field>
+        <field name="model">gestor_vehiculos_aaron.vehiculo</field>
+        <field name="arch" type="xml">
+
+            <search>
+                <!-- Búsqueda rápida -->
+                <field name="matricula"/>
+                <field name="marca"/>
+                <field name="modelo"/>
+                <field name="empleado_id"/>
+
+                <!-- FILTROS -->
+                <filter string="Disponibles"
+                        domain="[('disponible','=',True)]"/>
+
+                <filter string="Asignados"
+                        domain="[('disponible','=',False)]"/>
+
+                <separator/>
+
+                <filter string="Activos"
+                        domain="[('activo','=',True)]"/>
+
+                <filter string="Dados de baja"
+                        domain="[('activo','=',False)]"/>
+
+            </search>
+
+        </field>
+    </record>
+
+</odoo>

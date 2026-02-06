@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_employee_form_inherit_vehiculos" model="ir.ui.view">
+        <field name="name">hr.employee.form.inherit.vehiculos</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//notebook" position="inside">
+
+                <!-- PESTAÑA VEHÍCULO -->
+                <page string="Vehículo" invisible="not vehiculos_ids">
+
+                    <field name="vehiculos_ids">
+                        <list editable="bottom">
+                            <field name="matricula"/>
+                            <field name="marca"/>
+                            <field name="modelo"/>
+                            <field name="kilometros"/>
+                        </list>
+                    </field>
+
+                </page>
+
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

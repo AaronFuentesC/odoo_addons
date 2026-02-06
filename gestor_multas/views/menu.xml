@@ -1,0 +1,17 @@
+<odoo>
+    <menuitem id="menu_gestor_multas_root"
+              name="Gestión de Multas"
+              sequence="10"/>
+
+    <menuitem id="menu_gestion_multa"
+              name="Multas"
+              parent="menu_gestor_multas_root"
+              action="action_gestion_multa"
+              sequence="10"/>
+
+    <menuitem id="menu_gestion_tipo_multa"
+              name="Tipos de Multa"
+              parent="menu_gestor_multas_root"
+              action="action_gestion_tipo_multa"
+              sequence="20"/>
+</odoo>

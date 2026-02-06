@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gestor_vehiculos_aaron_vehiculo,gestor_vehiculos_aaron.vehiculo,model_gestor_vehiculos_aaron_vehiculo,base.group_user,1,1,1,1
+access_gestor_vehiculos_aaron_hr_employee,hr.employee,model_hr_employee,base.group_user,1,1,1,1
+access_vehiculo_historico_user,vehiculo_historico_user,model_gestor_vehiculos_aaron_vehiculo_historico,base.group_user,1,1,1,1
