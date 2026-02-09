@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_vehiculos_document">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+
+                    <style>
+                        h2 {
+                            text-align: center;
+                            margin-bottom: 20px;
+                        }
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            font-size: 12px;
+                        }
+                        th {
+                            background-color: #f0f0f0;
+                            border: 1px solid #ccc;
+                            padding: 6px;
+                        }
+                        td {
+                            border: 1px solid #ccc;
+                            padding: 6px;
+                        }
+                    </style>
+
+                    <h2>Listado de Vehículos</h2>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Matrícula</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Kilómetros</th>
+                                <th>Empleado</th>
+                                <th>Disponible</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="vehiculo">
+                                <tr>
+                                    <td><t t-esc="vehiculo.matricula"/></td>
+                                    <td><t t-esc="vehiculo.marca"/></td>
+                                    <td><t t-esc="vehiculo.modelo"/></td>
+                                    <td><t t-esc="vehiculo.kilometros"/></td>
+                                    <td>
+                                        <t t-esc="vehiculo.empleado_id.name or 'Sin asignar'"/>
+                                    </td>
+                                    <td>
+                                        <t t-if="vehiculo.disponible">Sí</t>
+                                        <t t-else="">No</t>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <p style="margin-top:15px; font-size:11px;">
+                        Total de vehículos: <t t-esc="len(docs)"/>
+                    </p>
+
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_multa_ficha_document">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+
+                <t t-foreach="docs" t-as="multa">
+                    <div class="page">
+
+                        <!-- TÍTULO -->
+                        <h2 style="text-align:center; margin-bottom:20px;">
+                            FICHA DE MULTA
+                        </h2>
+
+                        <!-- DATOS GENERALES -->
+                        <table class="table table-sm" style="width:100%; margin-bottom:20px;">
+                            <tr>
+                                <td style="width:30%;"><strong>Empleado</strong></td>
+                                <td><t t-esc="multa.empleado_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fecha</strong></td>
+                                <td><t t-esc="multa.fecha"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tipo de sanción</strong></td>
+                                <td><t t-esc="multa.tipo_multa_id.name"/></td>
+                            </tr>
+                        </table>
+
+                        <!-- DESCRIPCIÓN -->
+                        <h4 style="margin-top:10px;">Descripción</h4>
+                        <div style="border:1px solid #ccc; padding:10px; min-height:60px;">
+                            <t t-esc="multa.descripcion"/>
+                        </div>
+
+                        <!-- IMPORTE Y ESTADO -->
+                        <table class="table table-sm" style="width:100%; margin-top:20px;">
+                            <tr>
+                                <td style="width:30%;"><strong>Importe</strong></td>
+                                <td>
+                                    <t t-esc="'{:.2f}'.format(multa.importe)"/> €
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pagada por la empresa</strong></td>
+                                <td>
+                                    <t t-if="multa.pagada">
+                                        <span style="color:white; background-color:#28a745; padding:4px 8px; border-radius:4px;">
+                                            SÍ
+                                        </span>
+                                    </t>
+                                    <t t-else="">
+                                        <span style="color:white; background-color:#dc3545; padding:4px 8px; border-radius:4px;">
+                                            NO
+                                        </span>
+                                    </t>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </t>
+
+            </t>
+        </t>
+    </template>
+</odoo>

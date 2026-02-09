@@ -17,7 +17,7 @@ Long description of module's purpose
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'hr' , 'gestor_multas'],
+    'depends': ['base', 'hr' , 'gestor_multas','web'],
 
     # always loaded
     'data': [
@@ -25,6 +25,8 @@ Long description of module's purpose
         'views/vehiculo_views.xml',
         'views/hr_employee_views.xml',
         'views/views.xml',
+        'reports/report_vehiculos.xml',
+        'reports/report_vehiculos_action.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

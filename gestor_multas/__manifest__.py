@@ -18,7 +18,7 @@ Para el proyecto de herencia.
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'hr'],
+    'depends': ['base', 'hr','web'],
 
     # always loaded
     'data': [
@@ -27,6 +27,10 @@ Para el proyecto de herencia.
         'views/tipo_multa_views.xml',
         'views/menu.xml',
         'views/hr_employee_views.xml',
+        'reports/report_multas.xml',
+        'reports/report_multas_action.xml',
+        'reports/report_multa_ficha.xml',
+        'reports/report_multa_ficha_action.xml',
     ],
 
     # only loaded in demonstration mode

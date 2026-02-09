@@ -1,30 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-<!--
-          <record id="object0" model="gestor_vehiculos_aaron.gestor_vehiculos_aaron">
-            <field name="name">Object 0</field>
-            <field name="value">0</field>
-          </record>
 
-          <record id="object1" model="gestor_vehiculos_aaron.gestor_vehiculos_aaron">
-            <field name="name">Object 1</field>
-            <field name="value">10</field>
-          </record>
+    <!-- ============================= -->
+    <!-- EMPLEADOS (si no existen) -->
+    <!-- ============================= -->
 
-          <record id="object2" model="gestor_vehiculos_aaron.gestor_vehiculos_aaron">
-            <field name="name">Object 2</field>
-            <field name="value">20</field>
-          </record>
+    <record id="employee_demo_1" model="hr.employee">
+        <field name="name">Juan Pérez</field>
+    </record>
 
-          <record id="object3" model="gestor_vehiculos_aaron.gestor_vehiculos_aaron">
-            <field name="name">Object 3</field>
-            <field name="value">30</field>
-          </record>
+    <record id="employee_demo_2" model="hr.employee">
+        <field name="name">María López</field>
+    </record>
 
-          <record id="object4" model="gestor_vehiculos_aaron.gestor_vehiculos_aaron">
-            <field name="name">Object 4</field>
-            <field name="value">40</field>
-          </record>
--->
-    </data>
+    <record id="employee_demo_3" model="hr.employee">
+        <field name="name">Carlos Gómez</field>
+    </record>
+
+    <!-- ============================= -->
+    <!-- VEHÍCULOS -->
+    <!-- ============================= -->
+
+    <record id="vehiculo_demo_1" model="gestor_vehiculos_aaron.vehiculo">
+        <field name="matricula">1234-ABC</field>
+        <field name="marca">Toyota</field>
+        <field name="modelo">Corolla</field>
+        <field name="kilometros">120000</field>
+        <field name="empleado_id" ref="employee_demo_1"/>
+    </record>
+
+    <record id="vehiculo_demo_2" model="gestor_vehiculos_aaron.vehiculo">
+        <field name="matricula">5678-DEF</field>
+        <field name="marca">Ford</field>
+        <field name="modelo">Focus</field>
+        <field name="kilometros">98000</field>
+        <field name="empleado_id" ref="employee_demo_2"/>
+    </record>
+
+    <record id="vehiculo_demo_3" model="gestor_vehiculos_aaron.vehiculo">
+        <field name="matricula">9012-GHI</field>
+        <field name="marca">Seat</field>
+        <field name="modelo">León</field>
+        <field name="kilometros">75000</field>
+        <field name="empleado_id" ref="employee_demo_3"/>
+    </record>
+
+    <record id="vehiculo_demo_4" model="gestor_vehiculos_aaron.vehiculo">
+        <field name="matricula">3456-JKL</field>
+        <field name="marca">Volkswagen</field>
+        <field name="modelo">Golf</field>
+        <field name="kilometros">110000</field>
+        <field name="empleado_id" ref="employee_demo_1"/>
+    </record>
+
+    <record id="vehiculo_demo_5" model="gestor_vehiculos_aaron.vehiculo">
+        <field name="matricula">7890-MNO</field>
+        <field name="marca">Peugeot</field>
+        <field name="modelo">308</field>
+        <field name="kilometros">67000</field>
+        <!-- Sin empleado actual -->
+    </record>
+
+    <!-- ============================= -->
+    <!-- HISTÓRICO DE VEHÍCULOS -->
+    <!-- ============================= -->
+
+    <record id="historico_demo_1" model="gestor_vehiculos_aaron.vehiculo_historico">
+        <field name="vehiculo_id" ref="vehiculo_demo_1"/>
+        <field name="empleado_id" ref="employee_demo_1"/>
+        <field name="fecha_inicio">2024-01-10 09:00:00</field>
+        <field name="activo">True</field>
+    </record>
+
+    <record id="historico_demo_2" model="gestor_vehiculos_aaron.vehiculo_historico">
+        <field name="vehiculo_id" ref="vehiculo_demo_2"/>
+        <field name="empleado_id" ref="employee_demo_2"/>
+        <field name="fecha_inicio">2023-09-01 08:30:00</field>
+        <field name="activo">True</field>
+    </record>
+
+    <record id="historico_demo_3" model="gestor_vehiculos_aaron.vehiculo_historico">
+        <field name="vehiculo_id" ref="vehiculo_demo_3"/>
+        <field name="empleado_id" ref="employee_demo_3"/>
+        <field name="fecha_inicio">2023-06-15 10:00:00</field>
+        <field name="activo">True</field>
+    </record>
+
+    <record id="historico_demo_4" model="gestor_vehiculos_aaron.vehiculo_historico">
+        <field name="vehiculo_id" ref="vehiculo_demo_4"/>
+        <field name="empleado_id" ref="employee_demo_1"/>
+        <field name="fecha_inicio">2022-03-01 09:00:00</field>
+        <field name="fecha_fin">2023-03-01 18:00:00</field>
+        <field name="activo">False</field>
+    </record>
+
+    <record id="historico_demo_5" model="gestor_vehiculos_aaron.vehiculo_historico">
+        <field name="vehiculo_id" ref="vehiculo_demo_4"/>
+        <field name="empleado_id" ref="employee_demo_2"/>
+        <field name="fecha_inicio">2023-03-02 09:00:00</field>
+        <field name="activo">True</field>
+    </record>
+
 </odoo>

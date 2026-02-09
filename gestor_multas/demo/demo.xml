@@ -1,30 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-<!--
-          <record id="object0" model="gestor_multas.gestor_multas">
-            <field name="name">Object 0</field>
-            <field name="value">0</field>
-          </record>
 
-          <record id="object1" model="gestor_multas.gestor_multas">
-            <field name="name">Object 1</field>
-            <field name="value">10</field>
-          </record>
+    <!-- ========================= -->
+    <!-- EMPLEADOS (demo)          -->
+    <!-- ========================= -->
 
-          <record id="object2" model="gestor_multas.gestor_multas">
-            <field name="name">Object 2</field>
-            <field name="value">20</field>
-          </record>
+    <record id="employee_juan" model="hr.employee">
+        <field name="name">Juan Pérez</field>
+    </record>
 
-          <record id="object3" model="gestor_multas.gestor_multas">
-            <field name="name">Object 3</field>
-            <field name="value">30</field>
-          </record>
+    <record id="employee_maria" model="hr.employee">
+        <field name="name">María López</field>
+    </record>
 
-          <record id="object4" model="gestor_multas.gestor_multas">
-            <field name="name">Object 4</field>
-            <field name="value">40</field>
-          </record>
--->
-    </data>
+    <record id="employee_carlos" model="hr.employee">
+        <field name="name">Carlos García</field>
+    </record>
+
+    <record id="employee_ana" model="hr.employee">
+        <field name="name">Ana Martínez</field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- TIPOS DE MULTA            -->
+    <!-- ========================= -->
+
+    <record id="tipo_velocidad" model="gestion.tipo_multa">
+        <field name="name">Exceso de velocidad</field>
+    </record>
+
+    <record id="tipo_aparcamiento" model="gestion.tipo_multa">
+        <field name="name">Mal estacionamiento</field>
+    </record>
+
+    <record id="tipo_alcohol" model="gestion.tipo_multa">
+        <field name="name">Conducción bajo los efectos del alcohol</field>
+    </record>
+
+    <record id="tipo_documentacion" model="gestion.tipo_multa">
+        <field name="name">Documentación caducada</field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- MULTAS (10 registros)     -->
+    <!-- ========================= -->
+
+    <!-- Juan (3 multas) -->
+    <record id="multa_juan_1" model="gestion.multa">
+        <field name="fecha">2025-01-10</field>
+        <field name="descripcion">Superó el límite de velocidad en autopista</field>
+        <field name="tipo_multa_id" ref="tipo_velocidad"/>
+        <field name="empleado_id" ref="employee_juan"/>
+        <field name="importe">300</field>
+        <field name="pagada">True</field>
+    </record>
+
+    <record id="multa_juan_2" model="gestion.multa">
+        <field name="fecha">2025-02-03</field>
+        <field name="descripcion">Aparcó en zona de carga y descarga</field>
+        <field name="tipo_multa_id" ref="tipo_aparcamiento"/>
+        <field name="empleado_id" ref="employee_juan"/>
+        <field name="importe">120</field>
+        <field name="pagada">False</field>
+    </record>
+
+    <record id="multa_juan_3" model="gestion.multa">
+        <field name="fecha">2025-03-01</field>
+        <field name="descripcion">No llevaba la ITV en vigor</field>
+        <field name="tipo_multa_id" ref="tipo_documentacion"/>
+        <field name="empleado_id" ref="employee_juan"/>
+        <field name="importe">200</field>
+        <field name="pagada">True</field>
+    </record>
+
+    <!-- María (2 multas) -->
+    <record id="multa_maria_1" model="gestion.multa">
+        <field name="fecha">2025-01-15</field>
+        <field name="descripcion">Estacionamiento en doble fila</field>
+        <field name="tipo_multa_id" ref="tipo_aparcamiento"/>
+        <field name="empleado_id" ref="employee_maria"/>
+        <field name="importe">90</field>
+        <field name="pagada">True</field>
+    </record>
+
+    <record id="multa_maria_2" model="gestion.multa">
+        <field name="fecha">2025-02-20</field>
+        <field name="descripcion">Exceso leve de velocidad</field>
+        <field name="tipo_multa_id" ref="tipo_velocidad"/>
+        <field name="empleado_id" ref="employee_maria"/>
+        <field name="importe">150</field>
+        <field name="pagada">False</field>
+    </record>
+
+    <!-- Carlos (3 multas) -->
+    <record id="multa_carlos_1" model="gestion.multa">
+        <field name="fecha">2024-12-10</field>
+        <field name="descripcion">Conducción con tasa de alcohol superior a la permitida</field>
+        <field name="tipo_multa_id" ref="tipo_alcohol"/>
+        <field name="empleado_id" ref="employee_carlos"/>
+        <field name="importe">600</field>
+        <field name="pagada">True</field>
+    </record>
+
+    <record id="multa_carlos_2" model="gestion.multa">
+        <field name="fecha">2025-01-25</field>
+        <field name="descripcion">Aparcamiento indebido en paso de peatones</field>
+        <field name="tipo_multa_id" ref="tipo_aparcamiento"/>
+        <field name="empleado_id" ref="employee_carlos"/>
+        <field name="importe">200</field>
+        <field name="pagada">False</field>
+    </record>
+
+    <record id="multa_carlos_3" model="gestion.multa">
+        <field name="fecha">2025-03-05</field>
+        <field name="descripcion">No presentó permiso de circulación</field>
+        <field name="tipo_multa_id" ref="tipo_documentacion"/>
+        <field name="empleado_id" ref="employee_carlos"/>
+        <field name="importe">100</field>
+        <field name="pagada">False</field>
+    </record>
+
+    <!-- Ana (2 multas) -->
+    <record id="multa_ana_1" model="gestion.multa">
+        <field name="fecha">2025-02-01</field>
+        <field name="descripcion">Exceso de velocidad en vía urbana</field>
+        <field name="tipo_multa_id" ref="tipo_velocidad"/>
+        <field name="empleado_id" ref="employee_ana"/>
+        <field name="importe">180</field>
+        <field name="pagada">True</field>
+    </record>
+
+    <record id="multa_ana_2" model="gestion.multa">
+        <field name="fecha">2025-02-28</field>
+        <field name="descripcion">Estacionamiento en zona prohibida</field>
+        <field name="tipo_multa_id" ref="tipo_aparcamiento"/>
+        <field name="empleado_id" ref="employee_ana"/>
+        <field name="importe">110</field>
+        <field name="pagada">False</field>
+    </record>
+
 </odoo>

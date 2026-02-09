@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_multas_document">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+
+                <style>
+                    h2 {
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }
+                    h3 {
+                        margin-top: 25px;
+                        background-color: #f2f2f2;
+                        padding: 6px;
+                        border-left: 4px solid #875A7B;
+                    }
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        font-size: 12px;
+                        margin-bottom: 15px;
+                    }
+                    th {
+                        background-color: #875A7B;
+                        color: white;
+                        padding: 6px;
+                        text-align: left;
+                    }
+                    td {
+                        border: 1px solid #ddd;
+                        padding: 6px;
+                    }
+                    td.amount {
+                        text-align: right;
+                    }
+                    .paid {
+                        color: green;
+                        font-weight: bold;
+                    }
+                    .unpaid {
+                        color: red;
+                        font-weight: bold;
+                    }
+                    .summary {
+                        margin-top: 25px;
+                        padding: 12px;
+                        border: 2px solid #875A7B;
+                        background-color: #faf7f9;
+                        font-size: 13px;
+                    }
+                    .summary p {
+                        margin: 4px 0;
+                    }
+                </style>
+
+                <div class="page">
+
+                    <h2>Informe de Multas por Empleado</h2>
+
+                    <!-- TOTALES -->
+                    <t t-set="total_multas" t-value="0"/>
+                    <t t-set="total_pagadas" t-value="0"/>
+
+                    <!-- EMPLEADOS -->
+                    <t t-foreach="docs.mapped('empleado_id')" t-as="empleado">
+
+                        <h3>Empleado: <t t-esc="empleado.name"/></h3>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Tipo</th>
+                                    <th>Descripción</th>
+                                    <th style="text-align:right;">Importe (€)</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <t t-foreach="docs.filtered(lambda m: m.empleado_id == empleado)" t-as="multa">
+
+                                    <!-- SUMAS -->
+                                    <t t-set="total_multas" t-value="total_multas + multa.importe"/>
+                                    <t t-if="multa.pagada">
+                                        <t t-set="total_pagadas" t-value="total_pagadas + multa.importe"/>
+                                    </t>
+
+                                    <tr>
+                                        <td><t t-esc="multa.fecha"/></td>
+                                        <td><t t-esc="multa.tipo_multa_id.name"/></td>
+                                        <td><t t-esc="multa.descripcion"/></td>
+                                        <td class="amount">
+                                            <t t-esc="'%.2f' % multa.importe"/>
+                                        </td>
+                                        <td>
+                                            <span t-att-class="multa.pagada and 'paid' or 'unpaid'">
+                                                <t t-if="multa.pagada">Pagada</t>
+                                                <t t-else="">No pagada</t>
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                </t>
+
+                            </tbody>
+                        </table>
+
+                    </t>
+
+                    <!-- RESUMEN -->
+                    <div class="summary">
+                        <p>
+                            <strong>Total multas:</strong>
+                            <t t-esc="'%.2f' % total_multas"/> €
+                        </p>
+                        <p>
+                            <strong>Total pagado por la empresa:</strong>
+                            <t t-esc="'%.2f' % total_pagadas"/> €
+                        </p>
+                        <p>
+                            <strong>Porcentaje pagado:</strong>
+                            <t t-if="total_multas &gt; 0">
+                                <t t-esc="'%.2f' % ((total_pagadas / total_multas) * 100)"/> %
+                            </t>
+                            <t t-else="">0.00 %</t>
+                        </p>
+                    </div>
+                    <p style="margin-top:10px;">
+                        Total de multas: <t t-esc="len(docs)"/>
+                    </p>
+
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

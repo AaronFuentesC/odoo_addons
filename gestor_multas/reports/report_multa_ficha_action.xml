@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_report_multa_ficha" model="ir.actions.report">
+        <field name="name">Ficha de Multa</field>
+        <field name="model">gestion.multa</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">gestor_multas.report_multa_ficha_document</field>
+        <field name="report_file">gestor_multas.report_multa_ficha_document</field>
+        <field name="print_report_name">'Ficha de Multa'</field>
+
+        <field name="binding_model_id" ref="model_gestion_multa"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

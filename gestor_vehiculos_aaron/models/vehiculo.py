@@ -53,33 +53,36 @@ class Vehiculo(models.Model):
 ]
 
 
-def write(self, vals):
-    for vehiculo in self:
-        empleado_anterior = vehiculo.empleado_id
-
+    def write(self, vals):
         res = super().write(vals)
 
         if 'empleado_id' in vals:
-            nuevo_empleado = vehiculo.empleado_id
+            for vehiculo in self:
 
-            # Cerrar histórico anterior
-            historico_activo = self.env['gestor_vehiculos_aaron.vehiculo_historico'].search([
-                ('vehiculo_id', '=', vehiculo.id),
-                ('activo', '=', True)
-            ], limit=1)
+                #Cerrar histórico activo anterior
+                historico_activo = self.env[
+                    'gestor_vehiculos_aaron.vehiculo_historico'
+                ].search([
+                    ('vehiculo_id', '=', vehiculo.id),
+                    ('activo', '=', True)
+                ], limit=1)
 
-            if historico_activo:
-                historico_activo.write({
-                    'fecha_fin': fields.Datetime.now(),
-                    'activo': False,
-                })
+                if historico_activo:
+                    historico_activo.write({
+                        'fecha_fin': fields.Datetime.now(),
+                        'activo': False,
+                    })
 
-            # Crear nuevo histórico si hay empleado
-            if nuevo_empleado:
-                self.env['gestor_vehiculos_aaron.vehiculo_historico'].create({
-                    'vehiculo_id': vehiculo.id,
-                    'empleado_id': nuevo_empleado.id,
-                })
+                #Crear nuevo histórico si hay empleado
+                if vehiculo.empleado_id:
+                    self.env[
+                        'gestor_vehiculos_aaron.vehiculo_historico'
+                    ].create({
+                        'vehiculo_id': vehiculo.id,
+                        'empleado_id': vehiculo.empleado_id.id,
+                        'fecha_inicio': fields.Datetime.now(),
+                        'activo': True,
+                    })
 
         return res
 

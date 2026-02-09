@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_report_vehiculos" model="ir.actions.report">
+        <field name="name">Informe de Vehículos</field>
+        <field name="model">gestor_vehiculos_aaron.vehiculo</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">gestor_vehiculos_aaron.report_vehiculos_document</field>
+        <field name="report_file">gestor_vehiculos_aaron.report_vehiculos_document</field>
+        <field name="print_report_name">'Listado de Vehículos'</field>
+
+        <!-- OBLIGATORIO EN ODOO 15+ -->
+        <field name="binding_model_id"
+               ref="model_gestor_vehiculos_aaron_vehiculo"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
